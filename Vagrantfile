@@ -75,6 +75,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get dist-upgrade -y
+    apt-get install ansible -y
   SHELL
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "puppeteer.yml"
