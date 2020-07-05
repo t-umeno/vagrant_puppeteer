@@ -80,4 +80,5 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "puppeteer.yml"
     #ansible.verbose = "vvvv"
     ansible.limit = 'all'
+  end
 end
