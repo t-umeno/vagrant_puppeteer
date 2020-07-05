@@ -60,6 +60,15 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
 
+  if Vagrant.has_plugin?("vagrant-proxyconf") && ( ENV['http_proxy'] || ENV['https_proxy'] )
+    if ENV['http_proxy']
+      config.proxy.http     = ENV['http_proxy']
+    end
+    if ENV['https_proxy']
+      config.proxy.https    = ENV['https_proxy']
+    end
+    config.proxy.no_proxy = "localhost,127.0.0.1"
+  end
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
