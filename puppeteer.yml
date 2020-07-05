@@ -49,9 +49,8 @@
       vars:
         packages:
         - fonts-ipafont-gothic
-	- fonts-ipafont-mincho
+        - fonts-ipafont-mincho
       become: yes
     - name: install npm puppeteer
       npm:
         name: puppeteer
-	
