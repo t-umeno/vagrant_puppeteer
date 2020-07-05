@@ -1,0 +1,57 @@
+- name: puppeteer
+  hosts: testserver
+  connection: local
+  tasks:
+    - name: install git
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+        - git
+      become: yes
+    - name: install npm
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+        - npm
+      become: yes
+    - name: install libraries for headless chrome
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+        - npm
+        - libx11-xcb1
+        - libxcomposite1
+        - libxcursor1
+        - libxdamage1
+        - libxi-dev
+        - libxtst-dev
+        - libnss3
+        - libcups2
+        - libxss1
+        - libxrandr2
+        - libasound2
+        - libatk1.0-0
+        - libatk-bridge2.0-0
+        - libpangocairo-1.0-0
+        - libgtk-3-0
+        - libgbm1
+      become: yes
+    - name: install japanese fonts
+      apt:
+        name: "{{ packages }}"
+        update_cache: yes
+      vars:
+        packages:
+        - fonts-ipafont-gothic
+	- fonts-ipafont-mincho
+      become: yes
+    - name: install npm puppeteer
+      npm:
+        name: puppeteer
+	
