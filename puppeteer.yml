@@ -1,5 +1,5 @@
 - name: puppeteer
-  hosts: testserver
+  hosts: puppeteer
   connection: local
   tasks:
     - name: install git
