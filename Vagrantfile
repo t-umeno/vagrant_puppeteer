@@ -76,4 +76,8 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get dist-upgrade -y
   SHELL
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "puppeteer.yml"
+    #ansible.verbose = "vvvv"
+    ansible.limit = 'all'
 end
