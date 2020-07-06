@@ -2,6 +2,7 @@
   hosts: puppeteer
   connection: local
   tasks:
+    - set_fact: home_dir="{{ ansible_env.HOME }}"
     - name: install git
       apt:
         name: "{{ packages }}"
@@ -54,3 +55,4 @@
     - name: install npm puppeteer
       npm:
         name: puppeteer
+        path: "{{ home_dir }}"
