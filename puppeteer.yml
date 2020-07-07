@@ -1,8 +1,14 @@
 - name: puppeteer
   hosts: puppeteer
+  vars_files:
+    - settings/config.default.yml
+    - ["settings/config.yml", "settings/config.default.yml"]
   connection: local
   tasks:
     - set_fact: home_dir="{{ ansible_env.HOME }}"
+    - name: set timezone
+      script: scripts/set_timezone.sh "{{ timezone }}"
+      become: yes
     - name: install git
       apt:
         name: "{{ packages }}"
